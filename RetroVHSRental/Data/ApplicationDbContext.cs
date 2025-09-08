@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RetroVHSRental.Models;
 
 namespace RetroVHSRental.Data
 {
@@ -9,5 +10,7 @@ namespace RetroVHSRental.Data
             : base(options)
         {
         }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<film> films { get; set; }
     }
 }

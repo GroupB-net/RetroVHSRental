@@ -1,7 +1,11 @@
-﻿namespace RetroVHSRental.Models
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
+namespace RetroVHSRental.Models
 {
     public class film
     {
+        [Key]
         public int film_id { get; set; }
         public  string title { get; set; }
         public string description { get; set; }
