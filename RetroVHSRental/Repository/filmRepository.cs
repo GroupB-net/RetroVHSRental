@@ -1,5 +1,6 @@
 ﻿using RetroVHSRental.Models;
-;
+using RetroVHSRental.Data;
+using Microsoft.EntityFrameworkCore;
 namespace RetroVHSRental.Repository
 {
     public class filmRepository: IfilmRepository
@@ -16,13 +17,13 @@ namespace RetroVHSRental.Repository
         }
         public async Task<film> GetFilmByIdAsync(int id)
         {
-            return await _context.films.FirstOrdefaultAsync(m=>m.film_id==id);
+            return await _context.films.FirstOrDefaultAsync(m=>m.film_id==id);
         }
         public async Task<IEnumerable<film>> SearchAsynk(string title)
         {
 
             return await _context.films
-                .Where(f => f.Title.Contains(title))
+                .Where(f => f.title.Contains(title))
                 .ToListAsync();
         }
         public async Task UpdateAsync(film film)

@@ -1,6 +1,8 @@
 ﻿using RetroVHSRental.Models;
-namespace RetroVHSRental.Repository
+using RetroVHSRental.Data;
+using Microsoft.EntityFrameworkCore;
 
+namespace RetroVHSRental.Repository
 {
     public class BookingRepository: IBookingRepository
     {
@@ -18,7 +20,7 @@ namespace RetroVHSRental.Repository
         public async Task<IEnumerable<Booking>> GetBookingsByCustomerEmailAsync(string Email)
         {
             return await _context.Bookings
-                .Where(b => b.CustomerEmail == Email)
+                .Where(b => b.Customer.Email == Email)
                 .ToListAsync();
         }
         public async Task AddBookingAsync(Booking booking)

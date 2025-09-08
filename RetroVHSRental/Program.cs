@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RetroVHSRental.Data;
+using RetroVHSRental.Repository;
 
 namespace RetroVHSRental
 {
@@ -18,6 +19,8 @@ namespace RetroVHSRental
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddTransient<IBookingRepository, BookingRepository>();
+            builder.Services.AddTransient<IfilmRepository, filmRepository>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
